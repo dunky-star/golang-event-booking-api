@@ -1,1 +1,1 @@
-# Golang powered Even Booking RESTful API
+# Golang-powered Event Booking RESTful API
