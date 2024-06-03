@@ -1,1 +1,1 @@
-# golang-project-rest-api
+# Golang powered Even Booking RESTful API
