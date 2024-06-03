@@ -1,4 +1,6 @@
-## Golang-powered Event Booking RESTful API
+### Golang-powered Event Booking RESTful API
+
+---
 
 #### Key Features (API End-points)
 
