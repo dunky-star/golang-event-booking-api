@@ -5,7 +5,7 @@
 ---
 
 - GET /api/v1/events -> Get a list of available events
-- GET /api/v1/events/<id> -> Get an available event
+- GET /api/v1/events/{<id>} -> Get an available event
 - POST /api/v1/events -> Create a new bookable event
 - PUT /api/v1/events/<id> -> Update an event
 - DELETE /api/v1/events/<id> -> Delete an event
