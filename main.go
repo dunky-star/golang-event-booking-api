@@ -1,7 +1,9 @@
 package main
 
 import (
+	"log"
 	"net/http"
+	"os"
 
 	"dunky.com/eventbooking/db"
 	"dunky.com/eventbooking/models"
@@ -10,7 +12,12 @@ import (
 
 func main() {
 
-	db.InitDB() // To initialize database and create tables
+	dataSourceName := os.Getenv("DATABASE_URL")
+	if dataSourceName == "" {
+		log.Fatal("DATABASE_URL environment variable is required")
+	}
+
+	db.InitDB(dataSourceName) // To initialize database and create tables
 
 	server := gin.Default()
 

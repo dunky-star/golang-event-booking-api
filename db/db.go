@@ -2,17 +2,24 @@ package db
 
 import (
 	"database/sql"
+	"fmt"
 
 	_ "github.com/go-sql-driver/mysql"
 )
 
 var DB *sql.DB
 
-func InitDB() {
-	DB, err := sql.Open("sqlite3", "api.db")
+func InitDB(datasource string) {
+	DB, err := sql.Open("mysql", datasource)
 
 	if err != nil {
-		panic("Could not connect to the database")
+		panic(fmt.Sprintf("Error opening database: %v", err))
+	}
+
+	// Check if the database is actually reachable
+	err = DB.Ping()
+	if err != nil {
+		panic(fmt.Sprintf("Error connecting to the database: %v", err))
 	}
 
 	DB.SetMaxOpenConns(10)
@@ -30,9 +37,9 @@ func createTables() {
 		location TEXT NOT NULL,
 		dateTIME DATETIME NOT NULL,
 		user_id INTEGER
-	)`
+	);`
 	_, err := DB.Exec(createEventsTable)
 	if err != nil {
-		panic("Could not create event table")
+		panic(fmt.Sprintf("Error creating tables: %v", err))
 	}
 }
