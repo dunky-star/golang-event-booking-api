@@ -3,11 +3,14 @@ package main
 import (
 	"net/http"
 
+	"dunky.com/eventbooking/db"
 	"dunky.com/eventbooking/models"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
+
+	db.InitDB() // To initialize database and create tables
 
 	server := gin.Default()
 
