@@ -9,11 +9,11 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
-//var DB *sql.DB
+var DB *sql.DB
 
 func InitDB(datasource string) {
-	//var err error
-	DB, err := sql.Open("mysql", datasource)
+	var err error
+	DB, err = sql.Open("mysql", datasource)
 
 	if err != nil {
 		panic(fmt.Sprintf("Error opening database: %v", err))
@@ -28,22 +28,22 @@ func InitDB(datasource string) {
 	DB.SetMaxOpenConns(10)
 	DB.SetConnMaxIdleTime(5)
 
-	createTables(DB)
+	createTables()
 }
 
 // createTables func creates the necessary tables
-func createTables(db *sql.DB) {
+func createTables() {
 	createEventsTable := `
     CREATE TABLE IF NOT EXISTS events (
         id INT AUTO_INCREMENT PRIMARY KEY,
         name TEXT NOT NULL,
         description TEXT NOT NULL,
         location TEXT NOT NULL,
-        date_time DATETIME NOT NULL,
+        dateTime DATETIME NOT NULL,
         user_id INT
     );`
 
-	_, err := db.Exec(createEventsTable)
+	_, err := DB.Exec(createEventsTable)
 	if err != nil {
 		panic(fmt.Sprintf("Error creating events table: %v", err))
 	}
