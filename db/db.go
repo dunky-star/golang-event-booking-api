@@ -33,17 +33,30 @@ func InitDB(datasource string) {
 
 // createTables func creates the necessary tables
 func createTables() {
+	createUsersTable := `
+	CREATE TABLE IF NOT EXISTS users (
+		id INT PRIMARY KEY AUTO_INCREMENT,
+		email VARCHAR(50) NOT NULL UNIQUE,
+		password VARCHAR(50) NOT NULL
+	)`
+
+	_, err := DB.Exec(createUsersTable)
+	if err != nil {
+		panic(fmt.Sprintf("Error creating users table: %v", err))
+	}
+
 	createEventsTable := `
     CREATE TABLE IF NOT EXISTS events (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        name TEXT NOT NULL,
-        description TEXT NOT NULL,
-        location TEXT NOT NULL,
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        name VARCHAR(50) NOT NULL,
+        description VARCHAR(50) NOT NULL,
+        location VARCHAR(50) NOT NULL,
         dateTime DATETIME NOT NULL,
-        user_id INT
+        user_id INT,
+		FOREIGN KEY (user_id) REFERENCES users(id)
     );`
 
-	_, err := DB.Exec(createEventsTable)
+	_, err = DB.Exec(createEventsTable)
 	if err != nil {
 		panic(fmt.Sprintf("Error creating events table: %v", err))
 	}
