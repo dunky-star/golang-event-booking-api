@@ -3,43 +3,50 @@ package db
 import (
 	"database/sql"
 	"fmt"
+	"log"
 
+	//_ "github.com/mattn/go-sqlite3"
 	_ "github.com/go-sql-driver/mysql"
 )
 
-var DB *sql.DB
+//var DB *sql.DB
 
 func InitDB(datasource string) {
+	//var err error
 	DB, err := sql.Open("mysql", datasource)
 
 	if err != nil {
 		panic(fmt.Sprintf("Error opening database: %v", err))
 	}
 
-	// Check if the database is actually reachable
+	//Check if the database is actually reachable
 	err = DB.Ping()
 	if err != nil {
 		panic(fmt.Sprintf("Error connecting to the database: %v", err))
 	}
 
 	DB.SetMaxOpenConns(10)
-	DB.SetConnMaxIdleTime(2)
+	DB.SetConnMaxIdleTime(5)
 
-	createTables()
+	createTables(DB)
 }
 
-func createTables() {
+// createTables func creates the necessary tables
+func createTables(db *sql.DB) {
 	createEventsTable := `
-	CREATE TABLE IF NOT EXISTS events (
-		id INTEGER PRIMARY KEY AUTOINCREMENT,
-		name TEXT NOT NULL,
-		description TEXT NOT NULL,
-		location TEXT NOT NULL,
-		dateTIME DATETIME NOT NULL,
-		user_id INTEGER
-	);`
-	_, err := DB.Exec(createEventsTable)
+    CREATE TABLE IF NOT EXISTS events (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name TEXT NOT NULL,
+        description TEXT NOT NULL,
+        location TEXT NOT NULL,
+        date_time DATETIME NOT NULL,
+        user_id INT
+    );`
+
+	_, err := db.Exec(createEventsTable)
 	if err != nil {
-		panic(fmt.Sprintf("Error creating tables: %v", err))
+		panic(fmt.Sprintf("Error creating events table: %v", err))
 	}
+
+	log.Println("Events table created or already exists")
 }
