@@ -6,3 +6,8 @@ func HashPassword(password string) (string, error) {
 	bytes, err := bcrypt.GenerateFromPassword([]byte(password), 14)
 	return string(bytes), err
 }
+
+func CheckPasswordHash(password, hashpassword string) bool {
+	err := bcrypt.CompareHashAndPassword([]byte(hashpassword), []byte(password))
+	return err == nil
+}
