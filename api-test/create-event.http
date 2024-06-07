@@ -2,9 +2,9 @@ POST http://localhost:9090/api/v1/events
 Content-type: application/json
 
 {
-    "name": "LinkedIn Bootcamp",
-    "description": "Will be held in Iowa, come one, come all",
-    "location": "Des Moines, USA",
-    "dateTime": "2024-12-12T15:30:00.000Z"
+    "name": "Golang Webinar",
+    "description": "The mega event of the year",
+    "location": "Fairfield, USA",
+    "datetime": "2024-07-01T15:30:00.000Z"
 }
     

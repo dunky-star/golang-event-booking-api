@@ -11,6 +11,7 @@ import (
 func getEvents(context *gin.Context) {
 	events, err := models.GetAllEvents()
 	if err != nil {
+		fmt.Println("Error :", err)
 		context.JSON(http.StatusInternalServerError, gin.H{"message": "Could not fetch event. Try again later."})
 		return
 	}
@@ -39,6 +40,7 @@ func createEvent(context *gin.Context) {
 	var event models.Event
 	err := context.ShouldBindJSON(&event)
 	if err != nil {
+		//fmt.Println("Error parsing json:", err)
 		context.JSON(http.StatusBadRequest, gin.H{"message": "could not parse request body."})
 		return
 	}
@@ -46,6 +48,7 @@ func createEvent(context *gin.Context) {
 	event.UserID = 1
 	err = event.Save() // Saving the event model
 	if err != nil {
+		//fmt.Println("Error saving event:", err)
 		context.JSON(http.StatusInternalServerError, gin.H{"message": "Could not create event. Try again later"})
 		return
 	}
