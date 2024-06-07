@@ -1,12 +1,11 @@
 package routes
 
 import (
+	"dunky.com/eventbooking/models"
 	"fmt"
+	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
-
-	"dunky.com/eventbooking/models"
-	"github.com/gin-gonic/gin"
 )
 
 func getEvents(context *gin.Context) {

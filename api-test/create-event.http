@@ -2,9 +2,9 @@ POST http://localhost:9090/api/v1/events
 Content-type: application/json
 
 {
-    "name": "Golang Webinar",
-    "description": "The mega event of the year",
-    "location": "Fairfield, USA",
-    "datetime": "2024-07-01T15:30:00.000Z"
+    "name": "Job Fair",
+    "description": "Job Bonanza",
+    "location": "Remote, USA",
+    "datetime": "2025-01-01T12:00:00.000Z"
 }
     

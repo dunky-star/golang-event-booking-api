@@ -1,0 +1,9 @@
+PUT http://localhost:9090/api/v1/events/2
+Content-type: application/json
+
+{
+    "name": "Updated LinkedIn Job",
+    "description": "2024 Job Landscape discussion",
+    "Location": "IA 52557",
+    "datetime": "2025-01-05T10:30:00.0000Z"
+}
