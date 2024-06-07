@@ -1,10 +1,9 @@
 package models
 
 import (
-	"errors"
-
 	"dunky.com/eventbooking/db"
 	"dunky.com/eventbooking/utils"
+	"errors"
 )
 
 type User struct {

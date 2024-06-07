@@ -1,7 +1,6 @@
 package models
 
 import (
-	"fmt"
 	"time"
 
 	"dunky.com/eventbooking/db"
@@ -47,10 +46,15 @@ func GetAllEvents() ([]Event, error) {
 	defer rows.Close()
 
 	var events []Event
+	var dateTimeStr string
 
 	for rows.Next() {
 		var event Event
-		err := rows.Scan(&event.ID, &event.Name, &event.Description, &event.Location, &event.DateTime, &event.UserID)
+		err := rows.Scan(&event.ID, &event.Name, &event.Description, &event.Location, &dateTimeStr, &event.UserID)
+		if err != nil {
+			return nil, err
+		}
+		event.DateTime, err = time.Parse("2006-01-02 15:04:05", dateTimeStr)
 		if err != nil {
 			return nil, err
 		}
@@ -61,10 +65,15 @@ func GetAllEvents() ([]Event, error) {
 
 func GetEventById(id int64) (*Event, error) {
 	query := `SELECT * FROM events WHERE id = ?`
-	fmt.Println("Executing query:", query, "with id:", id)
+	//fmt.Println("Executing query:", query, "with id:", id)
 	row := db.DB.QueryRow(query, id)
 	var event Event
-	err := row.Scan(&event.ID, &event.Name, &event.Description, &event.Location, &event.DateTime, &event.UserID)
+	var dateTimeStr string
+	err := row.Scan(&event.ID, &event.Name, &event.Description, &event.Location, &dateTimeStr, &event.UserID)
+	if err != nil {
+		return nil, err
+	}
+	event.DateTime, err = time.Parse("2006-01-02 15:04:05", dateTimeStr)
 	if err != nil {
 		return nil, err
 	}
