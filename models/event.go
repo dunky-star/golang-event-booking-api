@@ -1,18 +1,19 @@
 package models
 
 import (
+	"fmt"
 	"time"
 
 	"dunky.com/eventbooking/db"
 )
 
 type Event struct {
-	ID          int64
-	Name        string    `binding:"required"` // For required field
-	Description string    `binding:"required"`
-	Location    string    `binding:"required"`
-	DateTime    time.Time `binding:"required"`
-	UserId      int
+	ID          int64     `json:"id"`
+	Name        string    `binding:"required" json:"name"` // For required field
+	Description string    `binding:"required" json:"description"`
+	Location    string    `binding:"required" json:"location"`
+	DateTime    time.Time `binding:"required" json:"date_time"`
+	UserID      int       `json:"user_id"`
 }
 
 //var events = []Event{}
@@ -20,14 +21,14 @@ type Event struct {
 // Method
 func (e Event) Save() error {
 	// later: add it to the database
-	query := `INSERT INTO events (name, description, location, dateTime, user_id) 
+	query := `INSERT INTO events (name, description, location, date_time, user_id) 
 	VALUES(?, ?, ?, ?, ?);`
 	stmt, err := db.DB.Prepare(query)
 	if err != nil {
 		return err
 	}
 	defer stmt.Close()
-	result, err := stmt.Exec(e.Name, e.Description, e.Location, e.DateTime, e.UserId)
+	result, err := stmt.Exec(e.Name, e.Description, e.Location, e.DateTime, e.UserID)
 	if err != nil {
 		return err
 	}
@@ -38,7 +39,7 @@ func (e Event) Save() error {
 
 // Normal function
 func GetAllEvents() ([]Event, error) {
-	query := "SELECT * FROM events"
+	query := `SELECT * FROM events`
 	rows, err := db.DB.Query(query)
 	if err != nil {
 		return nil, err
@@ -49,11 +50,24 @@ func GetAllEvents() ([]Event, error) {
 
 	for rows.Next() {
 		var event Event
-		err := rows.Scan(&event.ID, &event.Name, &event.Description, &event.Location, &event.DateTime, &event.UserId)
+		err := rows.Scan(&event.ID, &event.Name, &event.Description, &event.Location, &event.DateTime, &event.UserID)
 		if err != nil {
 			return nil, err
 		}
 		events = append(events, event)
 	}
 	return events, nil
+}
+
+func GetEventById(id int64) (*Event, error) {
+	query := `SELECT * FROM events WHERE id = ?`
+	fmt.Println("Executing query:", query, "with id:", id)
+	row := db.DB.QueryRow(query, id)
+	var event Event
+	err := row.Scan(&event.ID, &event.Name, &event.Description, &event.Location, &event.DateTime, &event.UserID)
+	if err != nil {
+		return nil, err
+	}
+
+	return &event, nil
 }
