@@ -8,12 +8,12 @@ import (
 )
 
 type Event struct {
-	ID          int64     `json:"id"`
-	Name        string    `binding:"required" json:"name"` // For required field
-	Description string    `binding:"required" json:"description"`
-	Location    string    `binding:"required" json:"location"`
-	DateTime    time.Time `binding:"required" json:"date_time"`
-	UserID      int       `json:"user_id"`
+	ID          int64
+	Name        string    `binding:"required"` // For required field
+	Description string    `binding:"required"`
+	Location    string    `binding:"required"`
+	DateTime    time.Time `binding:"required"`
+	UserID      int
 }
 
 //var events = []Event{}

@@ -51,7 +51,7 @@ func createTables() {
         name VARCHAR(50) NOT NULL,
         description VARCHAR(50) NOT NULL,
         location VARCHAR(50) NOT NULL,
-        dateTime DATETIME NOT NULL,
+        date_time DATETIME NOT NULL,
         user_id INT,
 		FOREIGN KEY (user_id) REFERENCES users(id)
     );`
