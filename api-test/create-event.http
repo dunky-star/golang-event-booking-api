@@ -1,11 +1,11 @@
 POST http://localhost:9090/api/v1/events
 content-type: application/json
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthbGlnc0BnbWFpbC5jb20iLCJleHAiOjE3MTc5NTMxMDIsInVzZXJJZCI6MH0.OPC1VctboRK79j2XqzaC2bf0XAJWIEvQ9ily5jYQwR4
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthbGlnc0BnbWFpbC5jb20iLCJleHAiOjE3MTc5NTcxMzMsInVzZXJJZCI6MX0.iq5a61Tn5rKlTotp-D7zaOpnmybdDJt4cWvyOEQCSKA
 
 {
-    "name": "Job Fair",
-    "description": "Job Bonanza",
-    "location": "Remote, USA",
-    "datetime": "2025-01-01T12:00:00.000Z"
+    "name": "AI Conference",
+    "description": "Theme: State of the AI in 2024, Fairfield IA",
+    "location": "Iowa, USA",
+    "datetime": "2024-07-01T12:00:00.000Z"
 }
     
