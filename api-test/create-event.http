@@ -1,5 +1,6 @@
 POST http://localhost:9090/api/v1/events
-Content-type: application/json
+content-type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthbGlnc0BnbWFpbC5jb20iLCJleHAiOjE3MTc5NTMxMDIsInVzZXJJZCI6MH0.OPC1VctboRK79j2XqzaC2bf0XAJWIEvQ9ily5jYQwR4
 
 {
     "name": "Job Fair",

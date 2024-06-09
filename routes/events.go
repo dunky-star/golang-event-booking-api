@@ -1,12 +1,12 @@
 package routes
 
 import (
+	"dunky.com/eventbooking/models"
+	"dunky.com/eventbooking/utils"
 	"fmt"
+	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
-
-	"dunky.com/eventbooking/models"
-	"github.com/gin-gonic/gin"
 )
 
 func getEvents(context *gin.Context) {
@@ -43,8 +43,15 @@ func createEvent(context *gin.Context) {
 		context.JSON(http.StatusUnauthorized, gin.H{"message": "Not Authorized."})
 		return
 	}
+
+	err := utils.VerifyToken(token)
+	if err != nil {
+		context.JSON(http.StatusUnauthorized, gin.H{"message": "Not Authorized."})
+		return
+	}
+
 	var event models.Event
-	err := context.ShouldBindJSON(&event)
+	err = context.ShouldBindJSON(&event)
 	if err != nil {
 		//fmt.Println("Error parsing json:", err)
 		context.JSON(http.StatusBadRequest, gin.H{"message": "could not parse request body."})
