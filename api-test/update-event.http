@@ -1,5 +1,6 @@
-PUT http://localhost:9090/api/v1/events/2
-Content-type: application/json
+PUT http://localhost:9090/api/v1/events/6
+content-type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthbGlnc0BnbWFpbC5jb20iLCJleHAiOjE3MTc5Njg2NjMsInVzZXJJZCI6MX0.QvwZTazTwYBVcIGbgkJc-UiUoWX2bXYsVHWjnaC-xpk
 
 {
     "name": "Updated LinkedIn Job",

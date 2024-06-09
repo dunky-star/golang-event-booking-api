@@ -1,11 +1,10 @@
 POST http://localhost:9090/api/v1/events
 content-type: application/json
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthbGlnc0BnbWFpbC5jb20iLCJleHAiOjE3MTc5NTcxMzMsInVzZXJJZCI6MX0.iq5a61Tn5rKlTotp-D7zaOpnmybdDJt4cWvyOEQCSKA
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthbGlnc0BnbWFpbC5jb20iLCJleHAiOjE3MTc5Njg2NjMsInVzZXJJZCI6MX0.QvwZTazTwYBVcIGbgkJc-UiUoWX2bXYsVHWjnaC-xpk
 
 {
-    "name": "AI Conference",
-    "description": "Theme: State of the AI in 2024, Fairfield IA",
-    "location": "Iowa, USA",
-    "datetime": "2024-07-01T12:00:00.000Z"
-}
-    
+    "name": "Updated LinkedIn Job",
+    "description": "2024 Job Landscape discussion",
+    "Location": "IA 52557",
+    "datetime": "2025-01-05T10:30:00.0000Z"
+}    
