@@ -68,8 +68,8 @@ func createTables() {
 		id INT PRIMARY KEY AUTO_INCREMENT,
 		event_id INT,
 		user_id INT,
-		FOREIGN KEY (event_id) REFERENCES (events),
-		FOREIGN KEY (user_id) REFERENCES (users)
+		FOREIGN KEY (event_id) REFERENCES events(id),
+		FOREIGN KEY (user_id) REFERENCES users(id)
 	);`
 	_, err = DB.Exec(createRegistrationTable)
 	if err != nil {

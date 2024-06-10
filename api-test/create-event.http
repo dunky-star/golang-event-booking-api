@@ -1,9 +1,9 @@
 POST http://localhost:9090/api/v1/events
 content-type: application/json
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthbGlnc0BnbWFpbC5jb20iLCJleHAiOjE3MTc5Njg2NjMsInVzZXJJZCI6MX0.QvwZTazTwYBVcIGbgkJc-UiUoWX2bXYsVHWjnaC-xpk
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthbGlnc0BnbWFpbC5jb20iLCJleHAiOjE3MTc5OTQ4OTMsInVzZXJJZCI6MX0.DOagJfu531aer0fu_yNT2pFChsW7y1aZMMwQXOXIeGY
 
 {
-    "name": "Updated LinkedIn Job",
+    "name": "LinkedIn Job Fair",
     "description": "2024 Job Landscape discussion",
     "Location": "IA 52557",
     "datetime": "2025-01-05T10:30:00.0000Z"
