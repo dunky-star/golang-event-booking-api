@@ -1,0 +1,2 @@
+POST http://localhost:9090/api/v1/events/3/register
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJleHAiOjE3MTc5OTU0NzAsInVzZXJJZCI6Mn0.-eMXwMnifJL32398ZpQoFSMAsp_0PLmqpwMbd6g-ZC8

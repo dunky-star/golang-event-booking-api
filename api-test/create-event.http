@@ -1,10 +1,10 @@
 POST http://localhost:9090/api/v1/events
 content-type: application/json
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthbGlnc0BnbWFpbC5jb20iLCJleHAiOjE3MTc5OTQ4OTMsInVzZXJJZCI6MX0.DOagJfu531aer0fu_yNT2pFChsW7y1aZMMwQXOXIeGY
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJleHAiOjE3MTc5OTU0NzAsInVzZXJJZCI6Mn0.-eMXwMnifJL32398ZpQoFSMAsp_0PLmqpwMbd6g-ZC8
 
 {
-    "name": "LinkedIn Job Fair",
-    "description": "2024 Job Landscape discussion",
-    "Location": "IA 52557",
+    "name": "AI Conference",
+    "description": "Emerging Market AI Conferencet",
+    "Location": "Des Moines, Iowa",
     "datetime": "2025-01-05T10:30:00.0000Z"
 }    
