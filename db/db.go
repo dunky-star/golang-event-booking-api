@@ -62,4 +62,17 @@ func createTables() {
 	}
 
 	log.Println("Events table created or already exists")
+
+	createRegistrationTable := `
+	CREATE TABLE IF NOT EXISTS registrations (
+		id INT PRIMARY KEY AUTO_INCREMENT,
+		event_id INT,
+		user_id INT,
+		FOREIGN KEY (event_id) REFERENCES (events),
+		FOREIGN KEY (user_id) REFERENCES (users)
+	);`
+	_, err = DB.Exec(createRegistrationTable)
+	if err != nil {
+		panic(fmt.Sprintf("Error creating registration table: %v", err))
+	}
 }
